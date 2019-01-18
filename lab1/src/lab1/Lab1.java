@@ -3,18 +3,42 @@
  * Lab        : 1
  * Date       : 1/18/218
  * Description: This lab sets up a priority queue for different jobs that will 
- *                 
+ *                 be performed and give an output that is consistent with the
+ *                 output required in lab handout
  */
 package lab1;
 
 
 public class Lab1 {
-
-    /**
-     * @param args the command line arguments
-     */
+    /***********************************************************************************
+     *                               Variables
+     **********************************************************************************/
+    
+    
+    
+    /***********************************************************************************
+     *                               Main Method
+     **********************************************************************************/
+	    
+    /***********************************************************************************
+     * Function Name : main()
+     * Input(s)      : String[] args - default for main method
+     * Output        : None
+     * Description   : Main method to initialize code
+     **********************************************************************************/
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        
+        
     }
     
+    /***********************************************************************************
+     *                                Methods
+     **********************************************************************************/
+    /***********************************************************************************
+     * Function Name : 
+     * Input(s)      : 
+     * Output        : 
+     * Description   : 
+     **********************************************************************************/
 }
