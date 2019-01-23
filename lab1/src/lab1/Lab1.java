@@ -22,7 +22,7 @@ public class Lab1 {
 	    
     /***********************************************************************************
      * Function Name : main()
-     * Input(s)      : String[] args - default for main method
+     * Input(s)      : String[] args - args[0] is the command line argument
      * Output        : None
      * Description   : Main method to initialize code
      **********************************************************************************/
