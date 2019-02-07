@@ -28,6 +28,8 @@ public class Lab1 {
     static jobs j_queue[]    = new jobs[30]; // Priority queue for jobs
     static jobs j_waiting[]  = new jobs[30]; // Jobs waiting to be placed in queue
     
+    static int num_jobs;
+    
     /***********************************************************************************
      *                               Main Method
      **********************************************************************************/
@@ -39,7 +41,7 @@ public class Lab1 {
      * Description   : Main method to initialize code
      **********************************************************************************/
     public static void main(String[] args) {
-        read_file(file /*args[0]*/);
+        num_jobs = read_file(file /*args[0]*/);
         
         
     }
@@ -47,6 +49,19 @@ public class Lab1 {
     /***********************************************************************************
      *                                Methods
      **********************************************************************************/
+    
+    /***********************************************************************************
+     * Function Name : prioritize()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Organizes jobs by priority in priority queue (j_queue[]). Sets 
+     *                    order within the queue and adds jobs to the queue if 
+     **********************************************************************************/
+    private static void prioritize()
+    {
+        
+    }
+    
     /***********************************************************************************
      * Function Name : read_file()
      * Input(s)      : file_read - String of the file name
@@ -54,7 +69,7 @@ public class Lab1 {
      * Description   : Function to read in file and set up 
      **********************************************************************************/
     
-    private static void read_file(String file_read)
+    private static int read_file(String file_read)
     {
         try {
             br = new BufferedReader(new FileReader(file_read));
@@ -70,6 +85,22 @@ public class Lab1 {
             }
         } catch (IOException ex) {
             Logger.getLogger(Lab1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return num;
+    }
+    
+    /***********************************************************************************
+     * Function Name : run()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to run code
+     **********************************************************************************/
+    private static void run()
+    {
+        while(true)
+        {
+            
         }
     }
 }
