@@ -15,6 +15,7 @@ public class jobs {
     private int priority;
     private int arrival_time;
     private int duration;
+    private int time_left;
     
     
     
@@ -37,6 +38,8 @@ public class jobs {
         priority     = _priority;
         arrival_time = _arrivalTime;
         duration     = _duration;
+        
+        time_left    = duration;
     }
     
     /***********************************************************************************
@@ -87,6 +90,17 @@ public class jobs {
     }
     
     /***********************************************************************************
+     * Function Name : time_left()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to return time left to run job
+     **********************************************************************************/
+    public int time_left()
+    {
+        return time_left;
+    }
+    
+    /***********************************************************************************
      * Function Name : print_job()
      * Input(s)      : None
      * Output        : None
@@ -96,4 +110,18 @@ public class jobs {
     {
         System.out.println(job_num + " " + priority + " " + arrival_time + " " + duration);
     }
+    
+    /***********************************************************************************
+     * Function Name : run()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to run job for 1 second. Decrements by 1 second to say 
+     *                    that it has been run for a second
+     **********************************************************************************/
+    public void run()
+    {
+        time_left--;
+    }
+    
+    
 }
