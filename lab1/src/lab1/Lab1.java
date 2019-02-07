@@ -35,6 +35,7 @@ public class Lab1 {
     static int jobs_queue = 0; 
     static int time       = 0;  // Current time 
     
+    
     /***********************************************************************************
      *                               Main Method
      **********************************************************************************/
@@ -102,7 +103,7 @@ public class Lab1 {
      * Function Name : read_file()
      * Input(s)      : file_read - String of the file name
      * Output        : None
-     * Description   : Function to read in file and set up 
+     * Description   : Function to read in file and set up jobs in waiting array
      **********************************************************************************/
     
     private static int read_file(String file_read)
@@ -156,7 +157,7 @@ public class Lab1 {
         // Runs job for 1 second
         j_queue[0].run();
         
-        if ( j_queue[0].time_left() <= 0 )
+        if ( j_queue[0].get_time_left() <= 0 )
         {
             j_queue[0] = null;
             jobs_left--;

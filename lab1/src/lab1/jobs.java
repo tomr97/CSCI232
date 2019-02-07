@@ -15,9 +15,10 @@ public class jobs {
     private int priority;
     private int arrival_time;
     private int duration;
-    private int time_left;
+    private int time_left;    
     
-    
+    static int start_time; // time that the job started running
+    static int end_time;   // time that the job finished running
     
         
     /***********************************************************************************
@@ -95,7 +96,7 @@ public class jobs {
      * Output        : None
      * Description   : Function to return time left to run job
      **********************************************************************************/
-    public int time_left()
+    public int get_time_left()
     {
         return time_left;
     }
@@ -108,7 +109,17 @@ public class jobs {
      **********************************************************************************/
     public void print_job()
     {
-        System.out.println(job_num + " " + priority + " " + arrival_time + " " + duration);
+        System.out.print(job_num + " " + priority + " " + arrival_time + " " + duration);
+    }
+    /***********************************************************************************
+     * Function Name : print_end()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to print job info
+     **********************************************************************************/
+    public void print_end()
+    {
+        System.out.print("\tWait time: " + (start_time - arrival_time) + ",\tExecution time: " + (end_time - start_time));
     }
     
     /***********************************************************************************
@@ -123,5 +134,26 @@ public class jobs {
         time_left--;
     }
     
+    /***********************************************************************************
+     * Function Name : set_end()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to set end time for job
+     **********************************************************************************/
+    public void set_end(int _t)
+    {
+        end_time = _t;
+    }
     
+    /***********************************************************************************
+     * Function Name : set_start()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to set start time for job
+     **********************************************************************************/
+    public void set_start(int _t)
+    {
+        start_time = _t;
+    }
+            
 }
