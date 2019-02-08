@@ -22,7 +22,7 @@ public class Lab1 {
     /***********************************************************************************
      *                               Variables
      **********************************************************************************/
-    static String file       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\commands.txt";
+    static String file       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\input.txt";
     
     static String path       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\";
     
@@ -73,9 +73,9 @@ public class Lab1 {
         {
             if(j_waiting[i] != null)
             {
-                if(j_waiting[i].get_arrival_time() >= time)
+                if(j_waiting[i].get_arrival_time() == time)
                 {
-                    j_queue[jobs_queue] = j_waiting[i];
+                    j_queue[jobs_queue++] = j_waiting[i];
                     j_waiting[i]        = null;
                 }
             }
@@ -84,7 +84,7 @@ public class Lab1 {
         jobs j_temp;
         
         // organize jobs in queue
-        if ( jobs_queue > 1 ) // If more than 1 job in queue, it needs to be organized
+        if ( jobs_queue > 2 ) // If more than 1 job in queue, it needs to be organized
         {
             for ( int i = 0; i < ( jobs_queue - 1 ); i++ )
             {
@@ -99,6 +99,13 @@ public class Lab1 {
                 }
             }
         }
+        else if ( jobs_queue == 2 )
+        {
+            if( j_queue[0].get_priority() > j_queue[1].get_priority() )
+            {
+                
+            }
+        }//*/
     }
     
     /***********************************************************************************
@@ -144,7 +151,14 @@ public class Lab1 {
             // Calls function to set priority for jobs
             prioritize();
             
-            run_job();
+            if(jobs_queue > 0)
+            {
+                run_job();
+            }
+            else
+            {
+                System.out.println("Time " + time + "\tno job running");
+            }
             
             time++;
         }
@@ -169,7 +183,7 @@ public class Lab1 {
         
         j_queue[0].print_job(time);
         
-        if ( j_queue[0].get_time_left() <= 0 )
+        if ( j_queue[0].get_time_left() == 0 )
         {
             j_queue[0].set_end(time);
             j_queue[0].print_end();
