@@ -24,6 +24,8 @@ public class Lab1 {
      **********************************************************************************/
     static String file       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\commands.txt";
     
+    static String path       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\";
+    
     static BufferedReader br = null;
     static jobs j_queue[]    = new jobs[30]; // Priority queue for jobs
     static jobs j_waiting[]  = new jobs[30]; // Jobs waiting to be placed in queue
@@ -49,7 +51,7 @@ public class Lab1 {
     public static void main(String[] args) {
         num_jobs = read_file(file /*args[0]*/);
         
-        
+        run();
     }
     
     /***********************************************************************************
@@ -142,6 +144,8 @@ public class Lab1 {
             // Calls function to set priority for jobs
             prioritize();
             
+            run_job();
+            
             time++;
         }
     }
@@ -157,8 +161,19 @@ public class Lab1 {
         // Runs job for 1 second
         j_queue[0].run();
         
+        if(!j_queue[0].is_first())
+        {
+            j_queue[0].first_run();
+            j_queue[0].set_start(time);
+        }
+        
+        j_queue[0].print_job(time);
+        
         if ( j_queue[0].get_time_left() <= 0 )
         {
+            j_queue[0].set_end(time);
+            j_queue[0].print_end();
+            
             j_queue[0] = null;
             jobs_left--;
             
@@ -167,6 +182,6 @@ public class Lab1 {
             {
                 j_queue[i] = j_queue[i+1];
             }
-        }
+        }        
     }
 }

@@ -17,9 +17,10 @@ public class jobs {
     private int duration;
     private int time_left;    
     
-    static int start_time; // time that the job started running
-    static int end_time;   // time that the job finished running
+    private int start_time; // time that the job started running
+    private int end_time;   // time that the job finished running
     
+    private boolean first_run;
         
     /***********************************************************************************
      *                               Constructor
@@ -41,11 +42,25 @@ public class jobs {
         duration     = _duration;
         
         time_left    = duration;
+        
+        first_run    = false;
     }
     
     /***********************************************************************************
      *                                Methods
      **********************************************************************************/
+    
+    /***********************************************************************************
+     * Function Name : first_run()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to say that the job started running
+     **********************************************************************************/
+    public void first_run()
+    {
+        first_run = true;
+    }
+    
     /***********************************************************************************
      * Function Name : get_job_num()
      * Input(s)      : None
@@ -91,6 +106,17 @@ public class jobs {
     }
     
     /***********************************************************************************
+     * Function Name : is_first()
+     * Input(s)      : None
+     * Output        : boolean - Says if the job has been run at all
+     * Description   : Function to say  if job has started running
+     **********************************************************************************/
+    public boolean is_first()
+    {
+        return first_run;
+    }    
+    
+    /***********************************************************************************
      * Function Name : time_left()
      * Input(s)      : None
      * Output        : None
@@ -103,13 +129,13 @@ public class jobs {
     
     /***********************************************************************************
      * Function Name : print_job()
-     * Input(s)      : None
+     * Input(s)      : _s - int for second that the job was running
      * Output        : None
      * Description   : Function to print job info
      **********************************************************************************/
-    public void print_job()
+    public void print_job(int _s)
     {
-        System.out.print(job_num + " " + priority + " " + arrival_time + " " + duration);
+        System.out.println("Time " + _s + "\tJob " + job_num + " running");
     }
     /***********************************************************************************
      * Function Name : print_end()
@@ -119,7 +145,8 @@ public class jobs {
      **********************************************************************************/
     public void print_end()
     {
-        System.out.print("\tWait time: " + (start_time - arrival_time) + ",\tExecution time: " + (end_time - start_time));
+        System.out.print("\tJob " + job_num + " ended at time " + end_time + "s");
+        System.out.println("\tWait time: " + (start_time - arrival_time) + ",\tExecution time: " + (end_time - start_time));
     }
     
     /***********************************************************************************
