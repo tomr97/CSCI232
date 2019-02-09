@@ -17,14 +17,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import lab1.jobs;
+//import lab1.input;
 
 public class Lab1 {
     /***********************************************************************************
      *                               Variables
      **********************************************************************************/
-    static String file       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\input.txt";
+    //static String file       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\input.txt";
+    //static String file2      = "C:\\Users\\Tom\\Documents\\CSCI232\\lab1\\src\\lab1\\input.txt";
     
-    static String path       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\";
+    //static String path       = "C:\\Users\\d92r471\\Documents\\CSCI232\\lab1\\src\\lab1\\";
+    
+    static String currDir      = System.getProperty("user.dir");
     
     static BufferedReader br = null;
     static jobs j_queue[]    = new jobs[30]; // Priority queue for jobs
@@ -49,7 +53,8 @@ public class Lab1 {
      * Description   : Main method to initialize code
      **********************************************************************************/
     public static void main(String[] args) {
-        num_jobs = read_file(file /*args[0]*/);
+        //Assumes input.txt in lab 1 directory that other files are in
+        num_jobs = read_file(currDir + "\\src\\lab1\\" + "input.txt" /*args[0]*/);
         
         run();
     }
@@ -103,7 +108,9 @@ public class Lab1 {
         {
             if( j_queue[0].get_priority() > j_queue[1].get_priority() )
             {
-                
+                j_temp     = j_queue[0];
+                j_queue[0] = j_queue[1];
+                j_queue[1] = j_temp;
             }
         }//*/
     }
@@ -185,7 +192,7 @@ public class Lab1 {
         
         if ( j_queue[0].get_time_left() == 0 )
         {
-            j_queue[0].set_end(time);
+            j_queue[0].set_end(time+1);
             j_queue[0].print_end();
             
             j_queue[0] = null;
