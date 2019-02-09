@@ -54,7 +54,7 @@ public class Lab1 {
      **********************************************************************************/
     public static void main(String[] args) {
         //Assumes input.txt in lab 1 directory that other files are in
-        num_jobs = read_file(currDir + "\\src\\lab1\\" + "input.txt" /*args[0]*/);
+        num_jobs = read_file(currDir + "\\src\\lab1\\" + args[0]);
         
         run();
     }
