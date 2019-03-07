@@ -1,30 +1,59 @@
-/*
- * Class to run first fit algorithm
- */
+/***************************************************************************************
+ *  Filename       : first_fit.java
+ *  Included Files : 
+ *  Description    : 
+ *  Author         : Thomas Rudolph
+ *  Date           : 
+ *  Functions      : 
+ *                   
+ **************************************************************************************/
 package binpacker;
 
 
 public class first_fit {
+    /************************************************************************************
+     *                                   Variables
+     ***********************************************************************************/
+    private int[] input_arr;
+    private int   length;
+    private int capacity;
     
-    private int size;
-    private int in_sizes[] = new int[10];
-    private int space_used;
-    private int num_in = 0;
-    
-    public first_fit(int _s)
-    {
-        size = _s;        
-    }
+    private In_nodes start;
+    /************************************************************************************
+     *                                   Constructor
+     ***********************************************************************************/
+
     /***********************************************************************************
-     * Function Name : add_job()
+     * Constructor Name : first_fit()
+     * Input(s)         : int[] - _in 
+     * Description      : Sets up first fit function
+     **********************************************************************************/
+    public first_fit(int[] _in)
+    {
+        input_arr = _in;
+        length    = input_arr.length;
+        
+        run();
+    }
+    
+    /************************************************************************************
+     *                                   Functions
+     ***********************************************************************************/
+	
+    /***********************************************************************************
+     * Function Name : run()
      * Input(s)      : None
      * Output        : None
-     * Description   : Function to run first-fit function
+     * Description   : Function to run first fit
      **********************************************************************************/
-    public void add_job(int _len)
+    private void run()
     {
         
         
-        num_in++;
+        
+        for (int i = 1; i < length; i++)
+        {
+            
+        }
     }
 }
