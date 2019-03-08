@@ -1,21 +1,15 @@
-/***************************************************************************************
- *  Filename       : first_fit.java
- *  Included Files : 
- *  Description    : 
- *  Author         : Thomas Rudolph
- *  Date           : 
- *  Functions      : 
- *                   
- **************************************************************************************/
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package binpacker;
 
 import binpacker.In_nodes;
 
 
-public class first_fit {
-    /************************************************************************************
-     *                                   Variables
-     ***********************************************************************************/
+public class bestFitDecreasing {
+    
     private int[] input_arr;
     private int   length;
     private int   capacity;
@@ -24,16 +18,17 @@ public class first_fit {
     
     private In_nodes start;
     private In_nodes pointer;
+    
     /************************************************************************************
      *                                   Constructor
      ***********************************************************************************/
 
     /***********************************************************************************
-     * Constructor Name : first_fit()
+     * Constructor Name : bestFitDecreasing()
      * Input(s)         : int[] - _in 
-     * Description      : Sets up first fit function
+     * Description      : Sets up best fit decreasing function
      **********************************************************************************/
-    public first_fit(int[] _in, int _c)
+    public bestFitDecreasing(int[] _in, int _c)
     {
         input_arr = _in;
         length    = input_arr.length;
@@ -41,7 +36,6 @@ public class first_fit {
         
         run();
     }
-    
     /************************************************************************************
      *                                   Methods
      ***********************************************************************************/
@@ -53,10 +47,10 @@ public class first_fit {
      * Description   : Method to print out which bin each job is in
      **********************************************************************************/
     private void display()
-    {
+    {        
         System.out.println("\n");
-        System.out.println(" First Fit Results:");
-        System.out.println("--------------------");
+        System.out.println(" Best Fit Decreasing Results:");
+        System.out.println("-----------------------------");
         
         pointer = start;
         
@@ -87,41 +81,58 @@ public class first_fit {
     {
         start   = new In_nodes(capacity, num_bins++);
         start.add_job(input_arr[0]);
-        pointer = start;
         
-        boolean job_added; 
         
-        for (int i = 1; i < length; i++)
+        int best_diff;
+        int i_best_diff;
+        
+        for(int i = 1; i < length; i++)
         {
-            job_added = false;
-            // Point at first bin
+            best_diff   = 100;
+            i_best_diff = -1; // Sets index for best difference to be out of bounds
             pointer = start;
+            
             do
+            {                
+                int temp = pointer.get_space_left();
+                if(( temp - input_arr[i] ) > 0 && ( temp - input_arr[i] ) < best_diff )
+                {
+                    best_diff   = temp;
+                    i_best_diff = pointer.get_bin();
+                    
+                }
+                pointer = pointer.get_next();
+            }while(pointer != null);
+            pointer = start;
+            
+            if(i_best_diff == 0)
             {
-                // If enough space in pointer
-                if( (pointer.get_space_left() - input_arr[i]) >= 0 )
+                pointer.add_job(input_arr[i]);
+            }
+            else if(i_best_diff > 0)
+            {
+                for(int j = 0; j < i_best_diff; j++)
                 {
-                    pointer.add_job(input_arr[i]);
-                    job_added = true;
+                    pointer = pointer.get_next();
                 }
-                else
+                pointer.add_job(input_arr[i]);
+            }
+            else
+            {
+                while(pointer.get_next() != null)
                 {
-                    if(pointer.get_next() != null) // Getting stuck here
-                    {
-                        pointer = pointer.get_next();
-                        
-                    }
-                    else
-                    {
-                        In_nodes temp = new In_nodes(capacity, num_bins++); // Create new In_nodes
-                        temp.add_job(input_arr[i]); // Adds job to In_nodes
-                        pointer.set_next(temp);       // Sets next 
-                        pointer = pointer.get_next();
-                        job_added = true;
-                    }
+                    pointer = pointer.get_next();
                 }
-            }while(!job_added);
+                In_nodes temp = new In_nodes(capacity, num_bins++);
+                temp.add_job(input_arr[i]);
+                pointer.set_next(temp);
+            }
+            
         }
+        
         display();
+        
+        
     }
 }
+
