@@ -15,13 +15,15 @@ import java.io.FileReader;
 
 public class SpellCheck {
 
-    private static String file = "C:\\Users\\Tom\\Documents\\CSCI232\\MyGPS\\src\\mygps\\gz.gr";
-    private static String path = "C:\\Users\\Tom\\Documents\\CSCI232\\MyGPS\\src\\mygps\\";
+    private static String file = System.getProperty("user.dir") + "\\src\\spellcheck\\words.txt";
+    private static String path = System.getProperty("user.dir") + "\\src\\spellcheck\\";
 
     private static BufferedReader br;
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        System.out.println(file);
+        System.out.println(path);
     }
 
     /***********************************************************************************
