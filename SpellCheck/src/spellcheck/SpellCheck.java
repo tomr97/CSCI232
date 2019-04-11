@@ -53,18 +53,20 @@ public class SpellCheck {
 
 
         String line;
+        int j = 0;
 
         // Reads in from file
         while((line = br.readLine()) != null)
         {
+            System.out.println(++j);
             String[] c       = line.split(" ");
             
             String s = c[0];
             if( Character.isLetter(s.charAt(0)) )
             {
                 String _s = s.toLowerCase();
-                char _c = _s.charAt(0); // Get first letter
-                int  i  = _c - 'a';    // Subtract 'a' to get useable index
+                char   _c = _s.charAt(0); // Get first letter
+                int    i  = _c - 'a';    // Subtract 'a' to get useable index
                 dictionary[i].addNode(s); // add the letter to the dictionary               
             }
             else
