@@ -13,7 +13,8 @@ public class word {
     
     public word(String _w)
     {
-        word = _w;
+        word     = _w;
+        nextWord = null;
     }
     
     /***********************************************************************************
