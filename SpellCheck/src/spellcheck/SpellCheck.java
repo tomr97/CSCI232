@@ -19,11 +19,15 @@ public class SpellCheck {
     private static String path = System.getProperty("user.dir") + "\\src\\spellcheck\\";
 
     private static BufferedReader br;
+    
+    private static LinkedList[] dictionary = new LinkedList[27];
 
     public static void main(String[] args) {
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
         System.out.println(file);
         System.out.println(path);
+        
+        setUp();
     }
 
     /***********************************************************************************
@@ -44,12 +48,34 @@ public class SpellCheck {
 
         String line;
 
-        /*// Reads in from file
+        // Reads in from file
         while((line = br.readLine()) != null)
         {
             String[] c       = line.split(" ");
-        }*/
+            
+            String s = c[0].toLowerCase();
+            if( Character.isLetter(s.charAt(0)) )
+            {
+                char _c = s.charAt(0);
+                int  i  = _c - 'a';
+                //dictionary[i] = LinkedList
+            }
+        }//*/
 
+    }
+    
+    /***********************************************************************************
+     * Function Name : setUP()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to set up array for the dictionary
+     **********************************************************************************/
+    private void setUP()
+    {
+        for( int i = 0; i < dictionary.length; i++ )
+        {
+            dictionary[i] = new LinkedList();
+        }
     }
     
 }
