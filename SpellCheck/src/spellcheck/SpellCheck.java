@@ -12,6 +12,9 @@ package spellcheck;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SpellCheck {
 
@@ -28,6 +31,9 @@ public class SpellCheck {
         System.out.println(path);
         
         setUp();
+        
+        try {read_file();} 
+        catch (IOException ex) {Logger.getLogger(SpellCheck.class.getName()).log(Level.SEVERE, null, ex);}
     }
 
     /***********************************************************************************
@@ -36,7 +42,7 @@ public class SpellCheck {
      * Output        : None
      * Description   : Function to read in from file
      **********************************************************************************/
-    private static void read_file()
+    private static void read_file() throws IOException
     {
 
         try {
@@ -53,24 +59,30 @@ public class SpellCheck {
         {
             String[] c       = line.split(" ");
             
-            String s = c[0].toLowerCase();
+            String s = c[0];
             if( Character.isLetter(s.charAt(0)) )
             {
-                char _c = s.charAt(0);
-                int  i  = _c - 'a';
-                //dictionary[i] = LinkedList
+                String _s = s.toLowerCase();
+                char _c = _s.charAt(0); // Get first letter
+                int  i  = _c - 'a';    // Subtract 'a' to get useable index
+                dictionary[i].addNode(s); // add the letter to the dictionary               
+            }
+            else
+            {
+                dictionary[dictionary.length-1].addNode(s); // Add non letters 
+                                                            //   to end of the dictionary
             }
         }//*/
 
     }
     
     /***********************************************************************************
-     * Function Name : setUP()
+     * Function Name : setUp()
      * Input(s)      : None
      * Output        : None
      * Description   : Function to set up array for the dictionary
      **********************************************************************************/
-    private void setUP()
+    private static void setUp()
     {
         for( int i = 0; i < dictionary.length; i++ )
         {
