@@ -110,12 +110,12 @@ public class SpellCheck {
             //    word
             if(word_exists)
             {
-                System.out.println(myDoc.get_pointer());
+                //System.out.println(myDoc.get_pointer());
                 outputFile.println(myDoc.get_pointer());
             }
             else
             {
-                System.out.println("Wrong word: " + myDoc.get_pointer());
+                //System.out.println("Wrong word: " + myDoc.get_pointer());
                 fix_word(myDoc.get_pointer());
             }
             
@@ -127,19 +127,21 @@ public class SpellCheck {
      * Output        : String - suggested word
      * Description   : Check if triple letters
      **********************************************************************************/
-    private String check_triple(String _s)
+    private static String check_triple(String _s)
     {
         char prevLetter = _s.charAt(0);
         int count = 0;
+        
         
         for(int k = 1; k < _s.length(); k++)
         {
             if(_s.charAt(k) == prevLetter)
             {
                 count++;
-                if(count == 3)
+                if(count == 2)
                 {
-                    k = Integer.MAX_VALUE; // Break out of for loop
+                    k = _s.length(); // Break out of for loop
+                    System.out.println("Triple letters");
                 }
             }
             else
@@ -149,11 +151,70 @@ public class SpellCheck {
             }
         }
         
-        if( count == 3 )
+        if( count == 2 )
         {
+            System.out.println("triple letters");
+            
+            
             //Find suggestion
+            String suggested = "";
+            suggested       += _s.charAt(0);
             
+            int letter_index;
+            if ( ((_s.charAt(0) - 'a') >= 0 ) && ((_s.charAt(0) - 'a') < 26 ) )
+            {
+                letter_index = _s.charAt(0) - 'a';
+            }
+            else
+            {
+                letter_index = 26;
+            }
             
+            prevLetter = _s.charAt(0);
+            count = 0;  
+            char c;
+            
+            //find word suggestion;
+            for (int k = 1; k < _s.length(); k++ )
+            {
+                c = _s.charAt(k);
+                if( c == prevLetter)
+                {
+                    count++;
+                }
+                else
+                {
+                    count      = 0;
+                    prevLetter = c;
+                }
+                
+                if(count < 2)
+                {
+                    suggested += c;
+                }
+            }
+            
+            System.out.println("Suggested: " + suggested);
+            
+            //Check if suggested word exists
+            //have dictionary point to beginning
+            dictionary[letter_index].reset_pointer();
+            boolean word_exists = false;
+            
+            // Compare to words in dictionary while there are more words and it
+            //    has not found specified word
+            do{
+                if(dictionary[letter_index].get_pointer().equals(suggested))
+                {
+                    word_exists = true;
+                }
+            }while((dictionary[letter_index].move_pointer()) && !word_exists);
+            
+            // Returns word if it exists
+            if(word_exists)
+            {
+                return suggested;
+            }           
             
         }
         
@@ -170,7 +231,8 @@ public class SpellCheck {
     {
         suggestion = 0;
         
-        
+        String triple_suggestion = check_triple(_s);
+        System.out.println("Suggestion " + triple_suggestion);
     }
     
     /***********************************************************************************
