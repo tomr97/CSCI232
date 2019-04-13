@@ -195,7 +195,7 @@ public class SpellCheck {
                 }
             }
             
-            System.out.println("2 Suggested: " + suggested);
+            //System.out.println("2 Suggested: " + suggested);
             
             //Check if suggested word exists
             //have dictionary point to beginning
@@ -295,7 +295,7 @@ public class SpellCheck {
                 }
             }
             
-            System.out.println("Suggested: " + suggested);
+            //System.out.println("Suggested: " + suggested);
             
             //Check if suggested word exists
             //have dictionary point to beginning
@@ -330,7 +330,7 @@ public class SpellCheck {
      * Output        : None
      * Description   : Check if typo
      **********************************************************************************/
-    private static void check_typo(String _s, String _up, String _down)
+    private static String[] check_typo(String _s, String _up, String _down)
     {
         char prevLetter = _s.charAt(0);
         int count = 0;
@@ -361,12 +361,14 @@ public class SpellCheck {
         if (count > 1)
         {
             boolean word_exists = false;
-
-            while(_down.charAt(count + 1) > 'a')
+            boolean stay        = true;
+            //System.out.println("Char: " + (_down.charAt(0) - 'a'));
+            dictionary[_down.charAt(0) - 'a'].reset_pointer();
+            while(_down.charAt(count + 1) > 'a' && stay)
             {
                 //System.out.println(_down.charAt(count));
                 _down = _down.substring(0, count + 1) + (char)(_down.charAt(count + 1) - 1) + _down.substring(count + 2);
-                System.out.println(_down);
+                //System.out.println(_down);
 
 
                 //Check if suggested word exists
@@ -380,6 +382,8 @@ public class SpellCheck {
                     if(dictionary[_down.charAt(0) - 'a'].get_pointer().equals(_down))
                     {
                         word_exists = true;
+                        stay = false;
+                        //System.out.println("Word exists" + _down);
                     }
                 }while((dictionary[_down.charAt(0) - 'a'].move_pointer()) && !word_exists);
             }
@@ -387,17 +391,22 @@ public class SpellCheck {
             // Returns word if it exists
             if(!word_exists)
             {
+                //System.out.println("Null");
                 _down = null;
             }
-
-            /*while(_up.charAt(count) < 'z')
+            
+            stay = true;
+            dictionary[_up.charAt(0) - 'a'].reset_pointer();
+            while(_up.charAt(count+1) < 'z' && stay)
             {
-                _up = _up.substring(0, count + 1) + (char)(_up.charAt(count + 1) + 1) + _up.substring(count + 2);
-                System.out.println("Up: " + _up);
+                _up = _up.substring(0, count + 1) + (char)(_up.charAt(count + 1) + 1);// + _up.substring(count + 2);
+                //System.out.println("Up: " + _up);
 
                 //Check if suggested word exists
                 //have dictionary point to beginning
                 dictionary[_up.charAt(0) - 'a'].reset_pointer();
+                
+                word_exists = false;
 
                 // Compare to words in dictionary while there are more words and it
                 //    has not found specified word
@@ -405,9 +414,10 @@ public class SpellCheck {
                     if(dictionary[_up.charAt(0) - 'a'].get_pointer().equals(_up))
                     {
                         word_exists = true;
+                        stay        = false;
                     }
                 }while((dictionary[_up.charAt(0) - 'a'].move_pointer()) && !word_exists);
-            }*/
+            }//*/
 
             // Returns word if it exists
             if(!word_exists)
@@ -420,6 +430,9 @@ public class SpellCheck {
             _up   = null;
             _down = null;
         }
+        
+        String ret_val[] = {_up, _down};
+        return ret_val;
     }
     
     /***********************************************************************************
@@ -433,18 +446,65 @@ public class SpellCheck {
         suggestion = 0;
         
         String triple_suggestion = check_triple(_s);
-        System.out.println("3 Suggestion " + triple_suggestion);
+        //System.out.println("3 Suggestion " + triple_suggestion);
         
 
         String double_suggestion = check_double(_s);
-        System.out.println("2 Suggestion " + double_suggestion);
+        //System.out.println("2 Suggestion " + double_suggestion);
 
 
         String check_up = "", check_down = "";
 
-        check_typo(_s, check_up, check_down );
-
-
+        String checker[] = check_typo(_s, check_up, check_down );
+        
+        //System.out.println("-----\n" + check_down + "\n-----");
+        
+        System.out.println(_s + ": did you mean:");
+        
+        if(triple_suggestion != null && !triple_suggestion.equals(""))
+        {
+            System.out.println("1. " + triple_suggestion);
+        }
+        if(double_suggestion != null && !double_suggestion.equals("")) 
+        {
+            System.out.println("2. " + double_suggestion);
+        }
+        if(checker[0] != null && !checker[0].equals(""))
+        {
+            System.out.println("3. " + checker[0]);
+        }
+        if(checker[1] != null && !checker[1].equals(""))
+        {
+            System.out.println("4. " + checker[1]);
+        }
+        System.out.println("0. something else\n");
+        
+        String val = scan.next();
+        
+        if(val.equals("1"))
+        {
+            outputFile.println(triple_suggestion);
+        }
+        else if(val.equals("2"))
+        {
+            outputFile.println(double_suggestion);
+        }
+        else if(val.equals("3"))
+        {
+            outputFile.println(checker[0]);
+        }
+        else if(val.equals("4"))
+        {
+            outputFile.println(checker[1]);
+        }
+        else if(val.equals("0"))
+        {
+            System.out.println("Write correct word: ");
+            String word = scan.next();
+            outputFile.println(word);
+        }
+        
+        
     }
     
     /***********************************************************************************
