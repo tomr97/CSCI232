@@ -6,6 +6,7 @@ public class LinkedList {
     
     word first = null;
     word curr;
+    word pointer;
     
     public LinkedList()
     {
@@ -26,6 +27,7 @@ public class LinkedList {
         {
             first = new word(_s);
             curr  = first;
+            pointer = first;
         }
         else // Handle if not first
         {
@@ -33,5 +35,56 @@ public class LinkedList {
             curr.setNext(new_word);
             curr = curr.getNext();
         }
+    }
+    /***********************************************************************************
+     * Function Name : get_pointer()
+     * Input(s)      : None
+     * Output        : String - String that pointer points at
+     * Description   : Function to return word that pointer points at
+     **********************************************************************************/
+    public String get_pointer()
+    {
+        return pointer.getWord();
+    }   
+    
+    /***********************************************************************************
+     * Function Name : has_more()
+     * Input(s)      : None
+     * Output        : boolean - variable to say if there are more words in list
+     * Description   : Function to say if there are more words if list. Returns true if
+     *                    curr.getNext() != null
+     **********************************************************************************/
+    public boolean has_more(){
+        
+        if(curr.getNext() == null)
+        {
+            return false;
+        }
+        return true;
+    }
+    /***********************************************************************************
+     * Function Name : move_pointer()
+     * Input(s)      : None
+     * Output        : boolean - says if pointer had been moved
+     * Description   : Function to move pointer to next index
+     **********************************************************************************/
+    public boolean move_pointer()
+    {
+        if( pointer.getNext() != null)
+        {
+            pointer = pointer.getNext();
+            return true;
+        }
+        return false;
+    }
+    /***********************************************************************************
+     * Function Name : reset_pointer()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to move pointer back to start
+     **********************************************************************************/
+    public void reset_pointer()
+    {
+        pointer = first;
     }
 }

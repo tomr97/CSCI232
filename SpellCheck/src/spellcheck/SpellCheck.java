@@ -38,8 +38,86 @@ public class SpellCheck {
         catch (IOException ex) {Logger.getLogger(SpellCheck.class.getName()).log(Level.SEVERE, null, ex);}
 
         read_mydoc();
+        checker();
+        //check_function();
     }
-
+    
+    private static void checker()
+    {/*
+        myDoc.reset_pointer();
+        
+        System.out.println(myDoc.get_pointer());
+        
+        while(myDoc.has_more())
+        {
+            myDoc.move_pointer();
+            System.out.println(myDoc.get_pointer());
+        }*/
+        
+        dictionary[6].reset_pointer();
+        System.out.println(dictionary[6].get_pointer());
+        
+        while(dictionary[6].has_more())
+        {
+            dictionary[6].move_pointer();
+            System.out.println(dictionary[6].get_pointer());
+        }
+    }
+    
+    /***********************************************************************************
+     * Function Name : check_function()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to make sure all of the words are in the dictionary
+     **********************************************************************************/
+    private static void check_function()
+    {
+        boolean word_exists = true;
+        int i = 0;
+        String s;
+        
+        myDoc.reset_pointer();
+            
+        
+        do{
+            s = myDoc.get_pointer();
+            s = s.toLowerCase();
+            if( ((s.charAt(0) - 'a') > 0 && ((s.charAt(0) - 'a') < 26 )))
+            {
+                i = s.charAt(0) - 'a';
+            }
+            else
+            {
+                i = 26;
+            }
+            
+            dictionary[i].reset_pointer();
+            word_exists = false;
+            
+            do{
+                if(dictionary[i].get_pointer().equals(myDoc.get_pointer()))
+                {
+                    word_exists = true;
+                }
+                else
+                {
+                    dictionary[i].move_pointer();
+                }
+            }while((dictionary[i].get_pointer() != null) && !word_exists);
+            
+            if(word_exists)
+            {
+                System.out.println(myDoc.get_pointer());
+            }
+            else
+            {
+                System.out.println("Wrong word: " + myDoc.get_pointer());
+            }
+            
+            myDoc.move_pointer();
+            
+        }while(myDoc.get_pointer() != null);
+    }  
     /***********************************************************************************
      * Function Name : read_file()
      * Input(s)      : None
@@ -81,17 +159,7 @@ public class SpellCheck {
         }//*/
 
     }
-    
-    /***********************************************************************************
-     * Function Name : check_function()
-     * Input(s)      : None
-     * Output        : None
-     * Description   : Function to make sure all of the words are in the dictionary
-     **********************************************************************************/
-    private void check_function()
-    {
-        
-    }    
+      
     
     /***********************************************************************************
      * Function Name : read_mydoc()
