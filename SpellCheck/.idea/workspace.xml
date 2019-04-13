@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f2e8c17d-16e2-4b12-939c-4e9bef1aa7f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/LinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/LinkedList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/SpellCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/SpellCheck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/word.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/word.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spellcheck/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/spellcheck/words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spellcheck/SpellCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spellcheck/SpellCheck.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/spellcheck/SpellCheck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+            <state relative-caret-position="357">
+              <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -106,7 +103,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555025720902" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555175981607" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -154,12 +151,12 @@
       <updated>1554829845733</updated>
       <workItem from="1554829847370" duration="2637000" />
       <workItem from="1555022788132" duration="2281000" />
-      <workItem from="1555102938721" duration="2045000" />
+      <workItem from="1555102938721" duration="3469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6963000" />
+    <option name="totallyTimeSpent" value="8387000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
@@ -174,7 +171,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32977462" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.102016605" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39976275" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -209,8 +206,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/spellcheck/SpellCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+        <state relative-caret-position="357">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />

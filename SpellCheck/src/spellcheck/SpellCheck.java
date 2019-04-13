@@ -22,10 +22,11 @@ public class SpellCheck {
     private static String path = System.getProperty("user.dir") + "\\src\\spellcheck\\";
 
     private static BufferedReader br;
+    private static BufferedReader br2;
     
     private static LinkedList[] dictionary = new LinkedList[27];
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
         System.out.println(file);
         System.out.println(path);
@@ -34,6 +35,8 @@ public class SpellCheck {
         
         try {read_file();} 
         catch (IOException ex) {Logger.getLogger(SpellCheck.class.getName()).log(Level.SEVERE, null, ex);}
+
+        read_mydoc();
     }
 
     /***********************************************************************************
@@ -77,6 +80,36 @@ public class SpellCheck {
         }//*/
 
     }
+
+    /***********************************************************************************
+     * Function Name : read_mydoc()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to read in file that we want spell checked
+     **********************************************************************************/
+    private static void read_mydoc() throws IOException {
+
+        try {
+            br2 = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String line;
+
+        // Reads in from file
+        while((line = br2.readLine()) != null)
+        {
+            String[] c       = line.split(" ");
+
+
+
+
+        }
+
+
+    }
+
     
     /***********************************************************************************
      * Function Name : setUp()
