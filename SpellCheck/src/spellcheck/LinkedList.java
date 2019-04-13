@@ -53,7 +53,7 @@ public class LinkedList {
      * Input(s)      : None
      * Output        : boolean - variable to say if there are more words in list
      * Description   : Function to say if there are more words if list. Returns true if
-     *                    curr.getNext() != null
+     *                    pointer.getNext() != null
      * @return 
      **********************************************************************************/
     public boolean has_more(){

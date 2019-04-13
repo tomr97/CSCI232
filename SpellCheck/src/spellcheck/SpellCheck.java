@@ -41,7 +41,7 @@ public class SpellCheck {
         
         check_function();
     }
-
+    
     
     /***********************************************************************************
      * Function Name : check_function()
@@ -60,10 +60,15 @@ public class SpellCheck {
         
         do{
             s = myDoc.get_pointer();
-            s = s.toLowerCase();
-            if( ((s.charAt(0) - 'a') > 0 && ((s.charAt(0) - 'a') < 26 )))
+            String _s = s.toLowerCase();
+            
+            if(_s.charAt(0) == 'a')
             {
-                i = s.charAt(0) - 'a';
+                i = 0;
+            }
+            else if( ((_s.charAt(0) - 'a') > 0 && ((_s.charAt(0) - 'a') < 26 )))
+            {
+                i = _s.charAt(0) - 'a';
             }
             else
             {
@@ -77,12 +82,12 @@ public class SpellCheck {
                 if(dictionary[i].get_pointer().equals(myDoc.get_pointer()))
                 {
                     word_exists = true;
-                }
+                }/*
                 else
                 {
                     dictionary[i].move_pointer();
-                }
-            }while((dictionary[i].get_pointer() != null) && !word_exists);
+                }*/
+            }while((dictionary[i].move_pointer()) && !word_exists);
             
             if(word_exists)
             {
@@ -93,9 +98,9 @@ public class SpellCheck {
                 System.out.println("Wrong word: " + myDoc.get_pointer());
             }
             
-            myDoc.move_pointer();
+            //myDoc.move_pointer();
             
-        }while(myDoc.get_pointer() != null);
+        }while(myDoc.move_pointer());
     }  
     /***********************************************************************************
      * Function Name : read_file()
