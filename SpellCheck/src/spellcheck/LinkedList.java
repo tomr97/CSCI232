@@ -41,6 +41,7 @@ public class LinkedList {
      * Input(s)      : None
      * Output        : String - String that pointer points at
      * Description   : Function to return word that pointer points at
+     * @return 
      **********************************************************************************/
     public String get_pointer()
     {
@@ -53,10 +54,11 @@ public class LinkedList {
      * Output        : boolean - variable to say if there are more words in list
      * Description   : Function to say if there are more words if list. Returns true if
      *                    curr.getNext() != null
+     * @return 
      **********************************************************************************/
     public boolean has_more(){
         
-        if(curr.getNext() == null)
+        if(pointer.getNext() == null)
         {
             return false;
         }
@@ -67,6 +69,7 @@ public class LinkedList {
      * Input(s)      : None
      * Output        : boolean - says if pointer had been moved
      * Description   : Function to move pointer to next index
+     * @return 
      **********************************************************************************/
     public boolean move_pointer()
     {

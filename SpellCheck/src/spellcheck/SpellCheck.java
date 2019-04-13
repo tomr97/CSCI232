@@ -38,31 +38,10 @@ public class SpellCheck {
         catch (IOException ex) {Logger.getLogger(SpellCheck.class.getName()).log(Level.SEVERE, null, ex);}
 
         read_mydoc();
-        checker();
-        //check_function();
+        
+        check_function();
     }
-    
-    private static void checker()
-    {/*
-        myDoc.reset_pointer();
-        
-        System.out.println(myDoc.get_pointer());
-        
-        while(myDoc.has_more())
-        {
-            myDoc.move_pointer();
-            System.out.println(myDoc.get_pointer());
-        }*/
-        
-        dictionary[6].reset_pointer();
-        System.out.println(dictionary[6].get_pointer());
-        
-        while(dictionary[6].has_more())
-        {
-            dictionary[6].move_pointer();
-            System.out.println(dictionary[6].get_pointer());
-        }
-    }
+
     
     /***********************************************************************************
      * Function Name : check_function()
