@@ -121,6 +121,107 @@ public class SpellCheck {
             
         }while(myDoc.move_pointer());
     }  
+    
+    /***********************************************************************************
+     * Function Name : check_double
+     * Input(s)      : _s - the word to check
+     * Output        : String - suggested word
+     * Description   : Check if double letters
+     **********************************************************************************/
+    private static String check_double(String _s)
+    {
+        char prevLetter = _s.charAt(0);
+        int count = 0;
+        
+        
+        for(int k = 1; k < _s.length(); k++)
+        {
+            if(_s.charAt(k) == prevLetter)
+            {
+                count++;
+                if(count == 2)
+                {
+                    k = _s.length(); // Break out of for loop
+                    //System.out.println("Triple letters");
+                }
+            }
+            else
+            {
+                count = 0;
+                prevLetter = _s.charAt(k);
+            }
+        }
+        
+        if( count >= 1 )
+        {
+            //System.out.println("triple letters");
+            
+            
+            //Find suggestion
+            String suggested = "";
+            suggested       += _s.charAt(0);
+            
+            int letter_index;
+            if ( ((_s.charAt(0) - 'a') >= 0 ) && ((_s.charAt(0) - 'a') < 26 ) )
+            {
+                letter_index = _s.charAt(0) - 'a';
+            }
+            else
+            {
+                letter_index = 26;
+            }
+            
+            prevLetter = _s.charAt(0);
+            count = 0;  
+            char c;
+            
+            //find word suggestion;
+            for (int k = 1; k < _s.length(); k++ )
+            {
+                c = _s.charAt(k);
+                if( c == prevLetter)
+                {
+                    count++;
+                }
+                else
+                {
+                    count      = 0;
+                    prevLetter = c;
+                }
+                
+                if(count < 1)
+                {
+                    suggested += c;
+                }
+            }
+            
+            System.out.println("2 Suggested: " + suggested);
+            
+            //Check if suggested word exists
+            //have dictionary point to beginning
+            dictionary[letter_index].reset_pointer();
+            boolean word_exists = false;
+            
+            // Compare to words in dictionary while there are more words and it
+            //    has not found specified word
+            do{
+                if(dictionary[letter_index].get_pointer().equals(suggested))
+                {
+                    word_exists = true;
+                }
+            }while((dictionary[letter_index].move_pointer()) && !word_exists);
+            
+            // Returns word if it exists
+            if(word_exists)
+            {
+                return suggested;
+            }           
+            
+        }
+        
+        return null;
+    }
+    
     /***********************************************************************************
      * Function Name : check_triple
      * Input(s)      : _s - the word to check
@@ -141,7 +242,7 @@ public class SpellCheck {
                 if(count == 2)
                 {
                     k = _s.length(); // Break out of for loop
-                    System.out.println("Triple letters");
+                    //System.out.println("Triple letters");
                 }
             }
             else
@@ -153,7 +254,7 @@ public class SpellCheck {
         
         if( count == 2 )
         {
-            System.out.println("triple letters");
+            //System.out.println("triple letters");
             
             
             //Find suggestion
@@ -221,6 +322,8 @@ public class SpellCheck {
         return null;
     }
     
+    
+    
     /***********************************************************************************
      * Function Name : fix_word()
      * Input(s)      : _s - string that holds incorrect word
@@ -232,7 +335,13 @@ public class SpellCheck {
         suggestion = 0;
         
         String triple_suggestion = check_triple(_s);
-        System.out.println("Suggestion " + triple_suggestion);
+        System.out.println("3 Suggestion " + triple_suggestion);
+        
+        if(triple_suggestion == null)
+        {
+            String double_suggestion = check_double(_s);
+            System.out.println("2 Suggestion " + double_suggestion);
+        }
     }
     
     /***********************************************************************************
