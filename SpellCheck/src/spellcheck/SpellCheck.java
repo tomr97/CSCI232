@@ -25,6 +25,7 @@ public class SpellCheck {
     private static BufferedReader br2;
     
     private static LinkedList[] dictionary = new LinkedList[27];
+    private static LinkedList   myDoc      = new LinkedList();  // LL for document with misspelled words
 
     public static void main(String[] args) throws IOException {
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
@@ -61,7 +62,7 @@ public class SpellCheck {
         // Reads in from file
         while((line = br.readLine()) != null)
         {
-            System.out.println(++j);
+            //System.out.println(++j);
             String[] c       = line.split(" ");
             
             String s = c[0];
@@ -80,7 +81,18 @@ public class SpellCheck {
         }//*/
 
     }
-
+    
+    /***********************************************************************************
+     * Function Name : check_function()
+     * Input(s)      : None
+     * Output        : None
+     * Description   : Function to make sure all of the words are in the dictionary
+     **********************************************************************************/
+    private void check_function()
+    {
+        
+    }    
+    
     /***********************************************************************************
      * Function Name : read_mydoc()
      * Input(s)      : None
@@ -90,7 +102,8 @@ public class SpellCheck {
     private static void read_mydoc() throws IOException {
 
         try {
-            br2 = new BufferedReader(new FileReader(file));
+            String file2 = path + "mydoc.txt";
+            br2 = new BufferedReader(new FileReader(file2));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -101,10 +114,10 @@ public class SpellCheck {
         while((line = br2.readLine()) != null)
         {
             String[] c       = line.split(" ");
-
-
-
-
+            
+            myDoc.addNode(c[0].toLowerCase());
+            //System.out.println(c[0]);
+            
         }
 
 
