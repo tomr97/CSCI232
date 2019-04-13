@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f2e8c17d-16e2-4b12-939c-4e9bef1aa7f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mydoc-checked.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mydoc-checked.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/LinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/LinkedList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/SpellCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/SpellCheck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpellCheck/spellcheck/mydoc.txt.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spellcheck/SpellCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spellcheck/SpellCheck.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/spellcheck/SpellCheck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+            <state relative-caret-position="648">
+              <caret line="409" column="15" selection-start-line="409" selection-start-column="15" selection-end-line="409" selection-end-column="15" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -28,10 +32,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/spellcheck/mydoc.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/spellcheck/LinkedList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+            <state relative-caret-position="-7">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
+              <folding>
+                <element signature="e#1440#1441#0" expanded="true" />
+                <element signature="e#2974#2975#0" expanded="true" />
+                <element signature="e#3005#3006#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,10 +57,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/spellcheck/word.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="-7">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
+                <element signature="e#792#793#0" expanded="true" />
                 <element signature="e#823#824#0" expanded="true" />
+                <element signature="e#1224#1225#0" expanded="true" />
                 <element signature="e#1645#1646#0" expanded="true" />
                 <element signature="e#1674#1675#0" expanded="true" />
               </folding>
@@ -58,6 +78,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/spellcheck/LinkedList.java" />
+        <option value="$PROJECT_DIR$/src/spellcheck/mydoc.txt" />
         <option value="$PROJECT_DIR$/src/spellcheck/SpellCheck.java" />
       </list>
     </option>
@@ -103,9 +125,10 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555175981607" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555193213327" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -151,18 +174,18 @@
       <updated>1554829845733</updated>
       <workItem from="1554829847370" duration="2637000" />
       <workItem from="1555022788132" duration="2281000" />
-      <workItem from="1555102938721" duration="3469000" />
+      <workItem from="1555102938721" duration="14188000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8387000" />
+    <option name="totallyTimeSpent" value="19106000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13883162" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.14057064" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -171,13 +194,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.102016605" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39976275" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.45731708" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32147095" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32977462" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32977462" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -204,32 +227,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/spellcheck/SpellCheck.java">
+    <entry file="file://$PROJECT_DIR$/src/spellcheck/word.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+        <state relative-caret-position="-7">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1645#1646#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/spellcheck/LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        <state relative-caret-position="-7">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="e#1440#1441#0" expanded="true" />
+            <element signature="e#2974#2975#0" expanded="true" />
+            <element signature="e#3005#3006#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/spellcheck/word.java">
+    <entry file="file://$PROJECT_DIR$/src/spellcheck/mydoc.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="16">
+          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spellcheck/SpellCheck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="409" column="15" selection-start-line="409" selection-start-column="15" selection-end-line="409" selection-end-column="15" />
           <folding>
-            <element signature="e#823#824#0" expanded="true" />
-            <element signature="e#1645#1646#0" expanded="true" />
-            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -321,8 +321,106 @@ public class SpellCheck {
         
         return null;
     }
-    
-    
+
+    /***********************************************************************************
+     * Function Name : check_typo
+     * Input(s)      : _s    - the word to check
+     *                 _up   - when the word increments
+     *                 _down - when the word decrements
+     * Output        : None
+     * Description   : Check if typo
+     **********************************************************************************/
+    private static void check_typo(String _s, String _up, String _down)
+    {
+        char prevLetter = _s.charAt(0);
+        int count = 0;
+
+        _up   = "";
+        _down = "";
+
+        //store copy of String _s
+        for(int k = 0; k < _s.length(); k++)
+        {
+            _up   += _s.charAt(k);
+            _down += _s.charAt(k);
+        }
+
+        for(int k = 1; k < _s.length(); k++)
+        {
+            if(_s.charAt(k) == prevLetter)
+            {
+                count = k;
+                k     = _s.length();
+            }
+            else
+            {
+                prevLetter = _s.charAt(k);
+            }
+        }
+
+        if (count > 1)
+        {
+            boolean word_exists = false;
+
+            while(_down.charAt(count + 1) > 'a')
+            {
+                //System.out.println(_down.charAt(count));
+                _down = _down.substring(0, count + 1) + (char)(_down.charAt(count + 1) - 1) + _down.substring(count + 2);
+                System.out.println(_down);
+
+
+                //Check if suggested word exists
+                //have dictionary point to beginning
+                dictionary[_down.charAt(0) - 'a'].reset_pointer();
+
+
+                // Compare to words in dictionary while there are more words and it
+                //    has not found specified word
+                do{
+                    if(dictionary[_down.charAt(0) - 'a'].get_pointer().equals(_down))
+                    {
+                        word_exists = true;
+                    }
+                }while((dictionary[_down.charAt(0) - 'a'].move_pointer()) && !word_exists);
+            }
+
+            // Returns word if it exists
+            if(!word_exists)
+            {
+                _down = null;
+            }
+
+            /*while(_up.charAt(count) < 'z')
+            {
+                _up = _up.substring(0, count + 1) + (char)(_up.charAt(count + 1) + 1) + _up.substring(count + 2);
+                System.out.println("Up: " + _up);
+
+                //Check if suggested word exists
+                //have dictionary point to beginning
+                dictionary[_up.charAt(0) - 'a'].reset_pointer();
+
+                // Compare to words in dictionary while there are more words and it
+                //    has not found specified word
+                do{
+                    if(dictionary[_up.charAt(0) - 'a'].get_pointer().equals(_up))
+                    {
+                        word_exists = true;
+                    }
+                }while((dictionary[_up.charAt(0) - 'a'].move_pointer()) && !word_exists);
+            }*/
+
+            // Returns word if it exists
+            if(!word_exists)
+            {
+                _up = null;
+            }
+        }
+        else
+        {
+            _up   = null;
+            _down = null;
+        }
+    }
     
     /***********************************************************************************
      * Function Name : fix_word()
@@ -337,11 +435,16 @@ public class SpellCheck {
         String triple_suggestion = check_triple(_s);
         System.out.println("3 Suggestion " + triple_suggestion);
         
-        if(triple_suggestion == null)
-        {
-            String double_suggestion = check_double(_s);
-            System.out.println("2 Suggestion " + double_suggestion);
-        }
+
+        String double_suggestion = check_double(_s);
+        System.out.println("2 Suggestion " + double_suggestion);
+
+
+        String check_up = "", check_down = "";
+
+        check_typo(_s, check_up, check_down );
+
+
     }
     
     /***********************************************************************************
