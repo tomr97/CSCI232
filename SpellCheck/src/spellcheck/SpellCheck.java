@@ -139,10 +139,10 @@ public class SpellCheck {
             if(_s.charAt(k) == prevLetter)
             {
                 count++;
-                if(count == 2)
+                if(count == 1)
                 {
                     k = _s.length(); // Break out of for loop
-                    //System.out.println("Triple letters");
+                    //System.out.println("double letters");
                 }
             }
             else
@@ -154,7 +154,7 @@ public class SpellCheck {
         
         if( count >= 1 )
         {
-            //System.out.println("triple letters");
+            //System.out.println("double letters");
             
             
             //Find suggestion
