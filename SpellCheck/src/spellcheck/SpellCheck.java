@@ -13,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,11 +28,24 @@ public class SpellCheck {
     
     private static LinkedList[] dictionary = new LinkedList[27];
     private static LinkedList   myDoc      = new LinkedList();  // LL for document with misspelled words
+    
+    private static PrintWriter outputFile;
+    private static Scanner     scan;
+    
+    //int to keep track of suggestion number
+    private static int suggestion;
+    
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        System.out.println(file);
-        System.out.println(path);
+        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        //System.out.println(file);
+        //System.out.println(path);
+        
+        //Sets up output file
+        outputFile = new PrintWriter("mydoc-checked.txt", "UTF-8");
+        
+        //Set up scanner
+        scan = new Scanner(System.in);
         
         setUp();
         
@@ -40,6 +55,9 @@ public class SpellCheck {
         read_mydoc();
         
         check_function();
+        
+        //closes output file
+        outputFile.close();
     }
     
     
@@ -61,7 +79,7 @@ public class SpellCheck {
         do{
             s = myDoc.get_pointer();
             String _s = s.toLowerCase();
-            
+            //Find index of dictionary array to read from
             if(_s.charAt(0) == 'a')
             {
                 i = 0;
@@ -75,33 +93,86 @@ public class SpellCheck {
                 i = 26;
             }
             
+            //have dictionary point to beginning
             dictionary[i].reset_pointer();
             word_exists = false;
             
+            // Compare to words in dictionary while there are more words and it
+            //    has not found specified word
             do{
                 if(dictionary[i].get_pointer().equals(myDoc.get_pointer()))
                 {
                     word_exists = true;
-                }/*
-                else
-                {
-                    dictionary[i].move_pointer();
-                }*/
+                }
             }while((dictionary[i].move_pointer()) && !word_exists);
             
+            // Prints word if it exists, otherwise calls function to find correct 
+            //    word
             if(word_exists)
             {
                 System.out.println(myDoc.get_pointer());
+                outputFile.println(myDoc.get_pointer());
             }
             else
             {
                 System.out.println("Wrong word: " + myDoc.get_pointer());
+                fix_word(myDoc.get_pointer());
             }
-            
-            //myDoc.move_pointer();
             
         }while(myDoc.move_pointer());
     }  
+    /***********************************************************************************
+     * Function Name : check_triple
+     * Input(s)      : _s - the word to check
+     * Output        : String - suggested word
+     * Description   : Check if triple letters
+     **********************************************************************************/
+    private String check_triple(String _s)
+    {
+        char prevLetter = _s.charAt(0);
+        int count = 0;
+        
+        for(int k = 1; k < _s.length(); k++)
+        {
+            if(_s.charAt(k) == prevLetter)
+            {
+                count++;
+                if(count == 3)
+                {
+                    k = Integer.MAX_VALUE; // Break out of for loop
+                }
+            }
+            else
+            {
+                count = 0;
+                prevLetter = _s.charAt(k);
+            }
+        }
+        
+        if( count == 3 )
+        {
+            //Find suggestion
+            
+            
+            
+        }
+        
+        return null;
+    }
+    
+    /***********************************************************************************
+     * Function Name : fix_word()
+     * Input(s)      : _s - string that holds incorrect word
+     * Output        : None
+     * Description   : Function to find correct word
+     **********************************************************************************/
+    private static void fix_word(String _s)
+    {
+        suggestion = 0;
+        
+        
+    }
+    
     /***********************************************************************************
      * Function Name : read_file()
      * Input(s)      : None
