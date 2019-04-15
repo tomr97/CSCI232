@@ -22,6 +22,8 @@ public class SpellCheck {
 
     private static String file = System.getProperty("user.dir") + "\\src\\spellcheck\\words.txt";
     private static String path = System.getProperty("user.dir") + "\\src\\spellcheck\\";
+    
+    private static S2tring f1 = "", f2 = "";
 
     private static BufferedReader br;
     private static BufferedReader br2;
@@ -40,6 +42,9 @@ public class SpellCheck {
         //System.out.println("Working Directory = " + System.getProperty("user.dir"));
         //System.out.println(file);
         //System.out.println(path);
+        
+        f1 = path + args[0];
+        f2 = path + args[1];
         
         //Sets up output file
         outputFile = new PrintWriter("mydoc-checked.txt", "UTF-8");
@@ -516,11 +521,7 @@ public class SpellCheck {
     private static void read_file() throws IOException
     {
 
-        try {
-            br = new BufferedReader(new FileReader(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        br = new BufferedReader(new FileReader(f1));
 
 
         String line;
@@ -558,12 +559,8 @@ public class SpellCheck {
      **********************************************************************************/
     private static void read_mydoc() throws IOException {
 
-        try {
-            String file2 = path + "mydoc.txt";
-            br2 = new BufferedReader(new FileReader(file2));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        String file2 = path + "mydoc.txt";
+        br2 = new BufferedReader(new FileReader(f2));
 
         String line;
 
